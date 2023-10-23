@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object\BaseObject.cpp">
+      <Filter>Object\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\PlayScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\BaseScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider\BoxCollider.cpp">
+      <Filter>Collision\Collider\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider\SphereCollider.cpp">
+      <Filter>Collision\Collider\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\Collision.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\CollisionManager.cpp">
+      <Filter>Collision\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\CollisionPrimitive.cpp">
+      <Filter>Collision\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\Input.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Load\GraphicLoader.cpp">
+      <Filter>Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\DxLib_Framework.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Object\BaseObject.h">
+      <Filter>Object\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\PlayScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\BaseScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\BaseCollider.h">
+      <Filter>Collision\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\BoxCollider.h">
+      <Filter>Collision\Collider\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\SphereCollider.h">
+      <Filter>Collision\Collider\Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\Collision.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\CollisionManager.h">
+      <Filter>Collision\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\CollisionPrimitive.h">
+      <Filter>Collision\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider\ColliderTypes.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Load\GraphicLoader.h">
+      <Filter>Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\DxLib_Framework.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object">
+      <UniqueIdentifier>{4d652851-5259-48cb-8384-13b14893022a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Base">
+      <UniqueIdentifier>{2311dc10-98f1-4e73-b77e-fb90042b0235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{a867f32f-4c9e-412b-9c97-ec5db0b7a4b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{5a029a0d-7cb7-49df-95c8-24e905268423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Collider">
+      <UniqueIdentifier>{73c423c8-77a3-43f7-9018-55289a2b9915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Collider\Box">
+      <UniqueIdentifier>{3b7f7311-4b94-480b-9c67-b3746bb86d79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Collider\Sphere">
+      <UniqueIdentifier>{aad6e60a-d5d5-406d-aa2f-3c22febda3f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Manager">
+      <UniqueIdentifier>{795d0e96-a5a6-49c5-8213-1e8f7dfe5281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Primitive">
+      <UniqueIdentifier>{7f1bc5a8-0651-423b-a942-6f9152ad5385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{190c8cd7-9c9b-4532-870d-a8eb69595409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader">
+      <UniqueIdentifier>{85bb6f5c-b146-4475-914f-fa493e114f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{66dc1019-af33-4905-8732-7fa061bc2c3a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
