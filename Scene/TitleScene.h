@@ -1,19 +1,15 @@
 #pragma once
 #include "BaseScene.h"
-#include "BaseObject.h"
-
-#include <list>
 
 /// <summary>
-/// プレイシーン
+/// タイトルシーン
 /// </summary>
-class PlayScene :
+class TitleScene :
 	public BaseScene {
-public: // メンバ関数
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	~PlayScene();
+	~TitleScene();
 
 	/// <summary>
 	/// 初期化処理
@@ -34,7 +30,4 @@ public: // メンバ関数
 	/// 終了処理
 	/// </summary>
 	void Finalize()override;
-
-private: // メンバ変数
-
 };
