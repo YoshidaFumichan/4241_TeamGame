@@ -1,4 +1,5 @@
 #include "DxLib_Framework.h"
+#include "TitleScene.h"
 #include "PlayScene.h"
 #include "Input.h"
 #include "GraphicLoader.h"

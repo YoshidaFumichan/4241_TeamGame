@@ -26,6 +26,7 @@ public: // メンバ関数
 
 	/// <summary>
 	/// 入力情報を取得
+	/// 例：GetKey(KEYS_INPUT_SPACE)(スペースキー入力情報取得)
 	/// </summary>
 	/// <param name="num">キーナンバー</param>
 	/// <returns>入力情報</returns>
@@ -33,6 +34,7 @@ public: // メンバ関数
 
 	/// <summary>
 	/// 1フレーム前の入力情報を取得
+	/// 例：GetOldKey(KEYS_INPUT_SPACE)(1フレーム前のスペースキー入力情報取得)
 	/// </summary>
 	/// <param name="num">キーナンバー</param>
 	/// <returns>1フレーム前の入力情報</returns>

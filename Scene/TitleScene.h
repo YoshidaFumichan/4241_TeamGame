@@ -6,6 +6,7 @@
 /// </summary>
 class TitleScene :
 	public BaseScene {
+private: // メンバ関数
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
@@ -30,4 +31,9 @@ class TitleScene :
 	/// 終了処理
 	/// </summary>
 	void Finalize()override;
+
+private: // メンバ変数
+	// 背景画像
+	int titleGraph = 0;
+
 };
