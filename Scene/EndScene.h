@@ -4,7 +4,7 @@
 /// <summary>
 /// タイトルシーン
 /// </summary>
-class TitleScene :
+class EndScene :
 	public BaseScene {
 private: // メンバ関数
 	/// <summary>
@@ -29,7 +29,5 @@ private: // メンバ関数
 
 private: // メンバ変数
 	// 背景画像
-	int titleGraph = 0;
-	int manualGraph = 0;
-	short change = 0;
+	int endGraph = 0;
 };

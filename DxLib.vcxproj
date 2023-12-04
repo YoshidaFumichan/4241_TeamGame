@@ -24,6 +24,7 @@
     <ProjectGuid>{e1b29883-034e-46fd-961b-faa06cad9640}</ProjectGuid>
     <RootNamespace>DxLib</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>湯切りで優勝</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -151,7 +152,9 @@
     <ClCompile Include="Load\GraphicLoader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object\BaseObject.cpp" />
+    <ClCompile Include="Object\Notes.cpp" />
     <ClCompile Include="Scene\BaseScene.cpp" />
+    <ClCompile Include="Scene\EndScene.cpp" />
     <ClCompile Include="Scene\PlayScene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
@@ -168,7 +171,9 @@
     <ClInclude Include="Input\Input.h" />
     <ClInclude Include="Load\GraphicLoader.h" />
     <ClInclude Include="Object\BaseObject.h" />
+    <ClInclude Include="Object\Notes.h" />
     <ClInclude Include="Scene\BaseScene.h" />
+    <ClInclude Include="Scene\EndScene.h" />
     <ClInclude Include="Scene\PlayScene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Scene\TitleScene.h" />

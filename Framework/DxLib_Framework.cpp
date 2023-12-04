@@ -11,6 +11,7 @@
 /// 静的メンバ変数の実態
 /// </summary>
 const wchar_t* DxLib_Framework::TITLE = L"湯切りで優勝";
+int DxLib_Framework::startTime = GetNowCount();
 
 DxLib_Framework* DxLib_Framework::GetInstance() {
 	// インスタンスを宣言
@@ -59,7 +60,7 @@ inline void DxLib_Framework::Initialize()
 	input = Input::GetInstance();
 
 	// シーンを初期化(タイトルシーン)
-	SceneManager::GetInstance()->Initialize(new PlayScene());
+	SceneManager::GetInstance()->Initialize(new TitleScene());
 }
 
 inline void DxLib_Framework::Loop()

@@ -16,6 +16,8 @@ private: // 静的メンバ変数
 	static const int WIN_WIDTH = 1280;
 	// ウィンドウ縦幅
 	static const int WIN_HEIGHT = 720;
+	// スタート時間取得
+	static int startTime;
 public: // 静的メンバ関数
 	/// <summary>
 	/// インスタンスを取得
@@ -39,6 +41,12 @@ public: // 静的メンバ関数
 	/// </summary>
 	/// <returns>ウィンドウ縦幅</returns>
 	static const int& GetWIN_HEIGHT() { return WIN_HEIGHT; }
+
+	/// <summary>
+	/// スタート時間を取得
+	/// </summary>
+	/// <returns>スタート時間</returns>
+	static const int& GetStartCount() { return startTime; }
 
 public: // メンバ関数
 	/// <summary>

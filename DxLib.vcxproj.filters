@@ -41,6 +41,12 @@
     <ClCompile Include="Scene\TitleScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Object\Notes.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\EndScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object\BaseObject.h">
@@ -88,6 +94,12 @@
     <ClInclude Include="Scene\TitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Object\Notes.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\EndScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Object">
@@ -95,9 +107,6 @@
     </Filter>
     <Filter Include="Object\Base">
       <UniqueIdentifier>{2311dc10-98f1-4e73-b77e-fb90042b0235}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene">
-      <UniqueIdentifier>{a867f32f-4c9e-412b-9c97-ec5db0b7a4b7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Collision">
       <UniqueIdentifier>{5a029a0d-7cb7-49df-95c8-24e905268423}</UniqueIdentifier>
@@ -125,6 +134,9 @@
     </Filter>
     <Filter Include="Framework">
       <UniqueIdentifier>{66dc1019-af33-4905-8732-7fa061bc2c3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{a867f32f-4c9e-412b-9c97-ec5db0b7a4b7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

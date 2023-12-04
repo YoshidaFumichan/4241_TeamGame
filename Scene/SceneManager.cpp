@@ -1,8 +1,7 @@
 #include "SceneManager.h"
 #include "BaseScene.h"
 
-SceneManager* SceneManager::GetInstance()
-{
+SceneManager* SceneManager::GetInstance() {
 	// インスタンスを宣言
 	static SceneManager instance;
 	return &instance;
