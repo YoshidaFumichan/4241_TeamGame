@@ -25,6 +25,12 @@ public: // ƒƒ“ƒoŠÖ”
 	/// </summary>
 	void Update();
 
+
+	/// <summary>
+	/// •`‰æˆ—
+	/// </summary>
+	void Draw();
+
 	/// <summary>
 	/// “ü—Íî•ñ‚ğŠm”F
 	/// </summary>

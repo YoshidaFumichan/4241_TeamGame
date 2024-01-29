@@ -26,7 +26,6 @@ void Notes::Initialize(const int& type, const int& StartTime) {
 	EndFlag = false;
 	// 現在のノーツ
 	nowNotes = false;
-
 	hit = 0;
 }
 
@@ -38,22 +37,23 @@ void Notes::Update() {
 			PlaySoundMem(SoundEffect, DX_PLAYTYPE_BACK);
 		}
 	}
-
 	if (nowNotes) {
 		CheckInput();
 	}
-
 	if (EndTime <= GetNowCount()) {
 		EndFlag = true;
 		nowNotes = false;
 	}
 }
 
-inline void Notes::CheckInput()
-{
+void Notes::Draw() {
+	if (type == 0)	DrawFormatString(0, 0, GetColor(0, 0, 0), L"下");
+	else if (type == 1)	DrawFormatString(0, 0, GetColor(0, 0, 0), L"左");
+}
+
+inline void Notes::CheckInput() {
 	// インスタンスを取得
 	Input* input = Input::GetInstance();
-
 	// DOWNキー処理
 	if (input->GetKey(KEY_INPUT_DOWN) && !input->GetOldKey(KEY_INPUT_DOWN)) {
 		if (type == 0) {
@@ -64,7 +64,6 @@ inline void Notes::CheckInput()
 			hit = -1;
 		}
 	}
-
 	// ENDキー処理
 	if (input->GetKey(KEY_INPUT_LEFT) && !input->GetOldKey(KEY_INPUT_LEFT)) {
 		if (type == 1) {

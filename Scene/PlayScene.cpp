@@ -9,8 +9,12 @@ void PlayScene::Initialize() {
 	BackGraph = LoadGraph(L"Resources/BackGraph.png");
 	// BGM取得
 	bgm = LoadSoundMem(L"Resources/BGM_Play.mp3");
-	// ボリュームを変更
+	// 音量を変更
+#if DEBUG
+	ChangeVolumeSoundMem(0, bgm);
+#else
 	ChangeVolumeSoundMem(50, bgm);
+#endif // DEBUG
 	// BGM再生
 	PlaySoundMem(bgm, DX_PLAYTYPE_BACK);
 	// カウントダウン用連番画像取得
@@ -46,6 +50,7 @@ void PlayScene::Initialize() {
 }
 
 void PlayScene::Update() {
+	oldNotes = nowNotes;
 	// 開始時カウントダウン
 	StartCountDown();
 
@@ -54,36 +59,52 @@ void PlayScene::Update() {
 		// ノーツの更新処理
 		for (int i = 0; i < 5; i++) {
 			notes[i]->Update();
+
 			// 現在のノーツ
 			if (notes[i]->nowNotes) {
 				this->nowNotes = i;
 				// 下キーの処理
 				if (notes[i]->type == 0) {
-					// 湯切りアニメーション
-					CutOjiAnimation = 1;
-					// 麵なし
-					RamenAnimation = 0;
-					// 湯切りをしたら上にあげる
-					if (notes[i]->hit == 1) {
+					if (notes[i]->hit == 0) {
 						CutOjiAnimation = 0;
 					}
+					else if (notes[i]->hit == 1) {
+						// 湯切りをしたら上にあげる
+						CutOjiAnimation = 1;
+					}
+					// 麵なし
+					RamenAnimation = 0;
 				}
+
 				// 左キーの処理
 				if (notes[i]->type == 1) {
-					// 麵なしおじさん
-					CutOjiAnimation = 2;
-					// 麺ありラーメン
-					RamenAnimation = 1;
-					// 左を押したら麺が出現
-					if (notes[i]->hit == 1) {
+					if (notes[i]->hit == 0) {
+						// 左を押したら麺が出現
 						CutOjiAnimation = 0;
+					}
+					if (notes[i]->hit == 1) {
+						// 麵なしおじさん
+						CutOjiAnimation = 2;
+						// 麺ありラーメン
+						RamenAnimation = 1;
 					}
 				}
 			}
 		}
 
+		if (nowNotes != oldNotes) {
+			damageFlag = false;
+		}
 		if (notes[nowNotes]->hit == -1) {
-			sceneManager->SetNextScene(new EndScene());
+			if (damageFlag == false) {
+				if (life != 0) {
+					life -= 1;
+				}
+				else {
+					sceneManager->SetNextScene(new EndScene());
+				}
+				damageFlag = true;
+			}
 		}
 		if (notes[4]->EndFlag) {
 			// ノーツの生成処理
@@ -99,6 +120,9 @@ void PlayScene::Draw() {
 	DrawGraph(0, 0, CutOjiGraph[CutOjiAnimation], true);
 	// ラーメン画像描画
 	DrawGraph(DxLib_Framework::GetWIN_WIDTH() / 2 - 62, 450, RamenGraph[RamenAnimation], true);
+
+	if (StartFlag) notes[nowNotes]->Draw();
+
 	if (notes[nowNotes]->hit == 1) {
 		DrawGraph(DxLib_Framework::GetWIN_WIDTH() / 2 - 32,
 			DxLib_Framework::GetWIN_HEIGHT() / 2 - 32, goodGraph, true);
@@ -112,7 +136,7 @@ void PlayScene::Draw() {
 	if (!StartFlag) {
 		DrawGraph(0, 0, CountDownGraph[CountDown], true);
 	}
-
+	DrawFormatString(0, 100, GetColor(0, 0, 0), L"life = %d", life + 1);
 }
 
 void PlayScene::Finalize() {
@@ -135,9 +159,16 @@ void PlayScene::StartCountDown() {
 }
 
 void PlayScene::CreateNotes() {
-	notes[0]->Initialize(0, GetNowCount());
+
+	notes[0]->Initialize(1, GetNowCount());
 	notes[1]->Initialize(0, GetNowCount() + 1000);
-	notes[2]->Initialize(0, GetNowCount() + 2000);
+	notes[2]->Initialize(1, GetNowCount() + 2000);
 	notes[3]->Initialize(0, GetNowCount() + 3000);
 	notes[4]->Initialize(1, GetNowCount() + 4000);
+
+	//notes[0]->Initialize(0, GetNowCount());
+	//notes[1]->Initialize(0, GetNowCount() + 1000);
+	//notes[2]->Initialize(0, GetNowCount() + 2000);
+	//notes[3]->Initialize(0, GetNowCount() + 3000);
+	//notes[4]->Initialize(1, GetNowCount() + 4000);
 }

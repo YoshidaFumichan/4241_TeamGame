@@ -60,7 +60,10 @@ private: // メンバ変数
 	// ノーツ
 	Notes* notes[5];
 	// ノーツカウント
-	int nowNotes;
+	int nowNotes = 0;
+	int oldNotes = 0;
 	int goodGraph;
 	int missGraph;
+	int life = 2;
+	bool damageFlag = false;
 };

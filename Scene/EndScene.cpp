@@ -5,8 +5,15 @@
 void EndScene::Initialize() {
 	// ƒ^ƒCƒgƒ‹‰æ‘œæ“¾
 	endGraph = LoadGraph(L"Resources/End.png");
-	// BGMÄ¶
+	// BGMæ“¾
 	bgm = LoadSoundMem(L"Resources/BGM_Title.mp3");
+	// ‰¹—Ê‚ğ’²®
+#if DEBUG
+	ChangeVolumeSoundMem(0, bgm);
+#else
+	ChangeVolumeSoundMem(50, bgm);
+#endif // DEBUG
+	// BGMÄ¶
 	PlaySoundMem(bgm, DX_PLAYTYPE_BACK);
 }
 

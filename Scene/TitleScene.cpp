@@ -8,6 +8,12 @@ void TitleScene::Initialize() {
 	manualGraph = LoadGraph(L"Resources/Manual.png");
 	// BGMæ“¾
 	bgm = LoadSoundMem(L"Resources/BGM_Title.mp3");
+	// ‰¹—Ê’²®
+#if DEBUG
+	ChangeVolumeSoundMem(0, bgm);
+#else
+	ChangeVolumeSoundMem(50, bgm);
+#endif // DEBUG
 	// BGMÄ¶
 	PlaySoundMem(bgm, DX_PLAYTYPE_BACK);
 }
