@@ -65,6 +65,7 @@ void PlayScene::Update() {
 				this->nowNotes = i;
 				// 下キーの処理
 				if (notes[i]->type == 0) {
+					scoreFlag = false;
 					if (notes[i]->hit == 0) {
 						CutOjiAnimation = 0;
 					}
@@ -87,6 +88,11 @@ void PlayScene::Update() {
 						CutOjiAnimation = 2;
 						// 麺ありラーメン
 						RamenAnimation = 1;
+						if (scoreFlag == false) {
+							// スコア加算
+							score++;
+							scoreFlag = true;
+						}
 					}
 				}
 			}
@@ -137,6 +143,7 @@ void PlayScene::Draw() {
 		DrawGraph(0, 0, CountDownGraph[CountDown], true);
 	}
 	DrawFormatString(0, 100, GetColor(0, 0, 0), L"life = %d", life + 1);
+	DrawFormatString(0, 200, GetColor(0, 0, 0), L"score = %d", score);
 }
 
 void PlayScene::Finalize() {
@@ -160,11 +167,11 @@ void PlayScene::StartCountDown() {
 
 void PlayScene::CreateNotes() {
 
-	notes[0]->Initialize(1, GetNowCount());
-	notes[1]->Initialize(0, GetNowCount() + 1000);
-	notes[2]->Initialize(1, GetNowCount() + 2000);
-	notes[3]->Initialize(0, GetNowCount() + 3000);
-	notes[4]->Initialize(1, GetNowCount() + 4000);
+	notes[0]->Initialize(0, GetNowCount());
+	notes[1]->Initialize(1, GetNowCount() + 1000);
+	notes[2]->Initialize(0, GetNowCount() + 2000);
+	notes[3]->Initialize(1, GetNowCount() + 3000);
+	notes[4]->Initialize(0, GetNowCount() + 4000);
 
 	//notes[0]->Initialize(0, GetNowCount());
 	//notes[1]->Initialize(0, GetNowCount() + 1000);

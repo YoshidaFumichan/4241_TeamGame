@@ -13,7 +13,8 @@ public: // 静的メンバ関数
 private: // 静的メンバ変数
 	// サウンドエフェクト
 	static int SoundEffect;
-
+	// キー画像のハンドル
+	static int notesHandle[2];
 public: // メンバ関数
 	/// <summary>
 	/// 初期化処理

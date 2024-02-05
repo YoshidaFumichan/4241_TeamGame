@@ -66,4 +66,6 @@ private: // ƒƒ“ƒo•Ï”
 	int missGraph;
 	int life = 2;
 	bool damageFlag = false;
+	int score = 0;
+	bool scoreFlag = false;
 };

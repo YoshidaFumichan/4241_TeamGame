@@ -7,10 +7,13 @@
 /// Ã“Iƒƒ“ƒo•Ï”‚ÌÀ‘Ô
 /// </summary>
 int Notes::SoundEffect = 0;
+int Notes::notesHandle[] = {};
 
 void Notes::StaticInitialize() {
 	// SE‚ğæ“¾
 	SoundEffect = LoadSoundMem(L"Resources/SE.mp3");
+	notesHandle[0] = LoadGraph(L"Resources/left.png");
+	notesHandle[1] = LoadGraph(L"Resources/down.png");
 }
 
 void Notes::Initialize(const int& type, const int& StartTime) {
@@ -47,8 +50,8 @@ void Notes::Update() {
 }
 
 void Notes::Draw() {
-	if (type == 0)	DrawFormatString(0, 0, GetColor(0, 0, 0), L"‰º");
-	else if (type == 1)	DrawFormatString(0, 0, GetColor(0, 0, 0), L"¶");
+	if (type == 0)	DrawGraph(0, 0, notesHandle[1], true);
+	else if (type == 1)	DrawGraph(0, 0, notesHandle[0], true);
 }
 
 inline void Notes::CheckInput() {
