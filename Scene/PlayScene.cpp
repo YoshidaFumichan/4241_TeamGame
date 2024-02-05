@@ -44,8 +44,14 @@ void PlayScene::Initialize() {
 	}
 	goodGraph = LoadGraph(L"Resources/good.png");
 	missGraph = LoadGraph(L"Resources/miss.png");
+
+	lifeHandle = LoadGraph(L"Resources/life.png");
+	lifenoHandle = LoadGraph(L"Resources/life2.png");
+
 	scoreGraphHandle = LoadGraph(L"Resources/plyascore.png");
 	LoadDivGraph(L"Resources/number.png", 10, 10, 1, 30, 70, scoreHandle);
+
+
 }
 
 void PlayScene::Update() {
@@ -183,7 +189,31 @@ void PlayScene::Draw() {
 		DrawGraph(340, 50, scoreHandle[n], true);
 	}
 
-	DrawFormatString(0, 300, GetColor(0, 0, 0), L"life = %d", life);
+	
+	if (life == 3)
+	{
+		DrawGraph(0, 550, lifeHandle, true);
+		DrawGraph(125, 550, lifeHandle, true);
+		DrawGraph(250, 550, lifeHandle, true);
+	}
+	else if (life == 2)
+	{
+		DrawGraph(0, 550, lifenoHandle, true);
+		DrawGraph(125, 550, lifeHandle, true);
+		DrawGraph(250, 550, lifeHandle, true);
+	}
+	else if (life == 1)
+	{
+		DrawGraph(0, 550, lifenoHandle, true);
+		DrawGraph(125, 550, lifenoHandle, true);
+		DrawGraph(250, 550, lifeHandle, true);
+	}
+	else if (life == 0)
+	{
+		DrawGraph(0, 550, lifenoHandle, true);
+		DrawGraph(125, 550, lifenoHandle, true);
+		DrawGraph(250, 550, lifenoHandle, true);
+	}
 }
 
 void PlayScene::Finalize() {

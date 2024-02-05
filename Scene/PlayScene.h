@@ -73,4 +73,6 @@ private: // ƒƒ“ƒo•Ï”
 	int endhit = 1;
 	int cutNum = 0;
 	int oldCutNum = 0;
+	int lifeHandle = 0;
+	int lifenoHandle = 0;
 };
