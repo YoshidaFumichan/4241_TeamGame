@@ -3,6 +3,7 @@
 #include <DxLib.h>
 #include <DxLib_FrameWork.h>
 #include <assert.h>
+#include <time.h>
 
 void PlayScene::Initialize() {
 	// 背景画像取得
@@ -10,11 +11,7 @@ void PlayScene::Initialize() {
 	// BGM取得
 	bgm = LoadSoundMem(L"Resources/BGM_Play.mp3");
 	// 音量を変更
-#if DEBUG
-	ChangeVolumeSoundMem(0, bgm);
-#else
 	ChangeVolumeSoundMem(50, bgm);
-#endif // DEBUG
 	// BGM再生
 	PlaySoundMem(bgm, DX_PLAYTYPE_BACK);
 	// カウントダウン用連番画像取得
@@ -47,9 +44,24 @@ void PlayScene::Initialize() {
 	}
 	goodGraph = LoadGraph(L"Resources/good.png");
 	missGraph = LoadGraph(L"Resources/miss.png");
+	scoreGraphHandle = LoadGraph(L"Resources/plyascore.png");
+	LoadDivGraph(L"Resources/number.png", 10, 10, 1, 30, 70, scoreHandle);
 }
 
 void PlayScene::Update() {
+	if (oldNotes != nowNotes) {
+		if (oldNotes == oldCutNum) {
+			if (endhit == 0) {
+				life -= 1;
+			}
+		}
+		else {
+			if (notes[oldNotes]->hit == 0) {
+				life -= 1;
+			}
+		}
+	}
+
 	oldNotes = nowNotes;
 	// 開始時カウントダウン
 	StartCountDown();
@@ -57,7 +69,7 @@ void PlayScene::Update() {
 	// スタートフラグが立っていたら
 	if (StartFlag) {
 		// ノーツの更新処理
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i <= cutNum; i++) {
 			notes[i]->Update();
 
 			// 現在のノーツ
@@ -98,6 +110,7 @@ void PlayScene::Update() {
 			}
 		}
 
+
 		if (nowNotes != oldNotes) {
 			damageFlag = false;
 		}
@@ -106,13 +119,19 @@ void PlayScene::Update() {
 				if (life != 0) {
 					life -= 1;
 				}
-				else {
-					sceneManager->SetNextScene(new EndScene());
-				}
 				damageFlag = true;
 			}
 		}
-		if (notes[4]->EndFlag) {
+
+
+		if (life <= 0) {
+			sceneManager->SetNextScene(new EndScene());
+		}
+
+
+		if (notes[cutNum]->EndFlag) {
+			endhit = notes[cutNum]->hit;
+			oldCutNum = cutNum;
 			// ノーツの生成処理
 			CreateNotes();
 		}
@@ -142,8 +161,29 @@ void PlayScene::Draw() {
 	if (!StartFlag) {
 		DrawGraph(0, 0, CountDownGraph[CountDown], true);
 	}
-	DrawFormatString(0, 100, GetColor(0, 0, 0), L"life = %d", life + 1);
-	DrawFormatString(0, 200, GetColor(0, 0, 0), L"score = %d", score);
+	DrawGraph(0, 50, scoreGraphHandle, true);
+
+	if (score < 10) {
+		DrawGraph(280, 50, scoreHandle[score], true);
+	}
+	else if (score < 100) {
+		int n = (score / 10);
+		DrawGraph(280, 50, scoreHandle[n], true);
+		n = (score % 10);
+		DrawGraph(310, 50, scoreHandle[n], true);
+	}
+	else if (score < 1000) {
+		int n = (score / 100);
+		DrawGraph(280, 50, scoreHandle[n], true);
+		n = (score % 100);
+		n = (n / 10);
+		DrawGraph(310, 50, scoreHandle[n], true);
+		n = (score % 100);
+		n = (n % 10);
+		DrawGraph(340, 50, scoreHandle[n], true);
+	}
+
+	DrawFormatString(0, 300, GetColor(0, 0, 0), L"life = %d", life);
 }
 
 void PlayScene::Finalize() {
@@ -166,16 +206,12 @@ void PlayScene::StartCountDown() {
 }
 
 void PlayScene::CreateNotes() {
-
-	notes[0]->Initialize(0, GetNowCount());
-	notes[1]->Initialize(1, GetNowCount() + 1000);
-	notes[2]->Initialize(0, GetNowCount() + 2000);
-	notes[3]->Initialize(1, GetNowCount() + 3000);
-	notes[4]->Initialize(0, GetNowCount() + 4000);
-
-	//notes[0]->Initialize(0, GetNowCount());
-	//notes[1]->Initialize(0, GetNowCount() + 1000);
-	//notes[2]->Initialize(0, GetNowCount() + 2000);
-	//notes[3]->Initialize(0, GetNowCount() + 3000);
-	//notes[4]->Initialize(1, GetNowCount() + 4000);
+	srand(time(NULL));
+	cutNum = rand() % 4 + 1;
+	// 湯切り
+	for (int i = 0; i < cutNum; i++) {
+		notes[i]->Initialize(0, GetNowCount() + i * 1000);
+	}
+	// ラーメン完成
+	notes[cutNum]->Initialize(1, GetNowCount() + cutNum * 1000);
 }

@@ -64,8 +64,13 @@ private: // ƒƒ“ƒo•Ï”
 	int oldNotes = 0;
 	int goodGraph;
 	int missGraph;
-	int life = 2;
+	int life = 3;
 	bool damageFlag = false;
 	int score = 0;
 	bool scoreFlag = false;
+	int scoreHandle[10] = {};
+	int scoreGraphHandle = 0;
+	int endhit = 1;
+	int cutNum = 0;
+	int oldCutNum = 0;
 };

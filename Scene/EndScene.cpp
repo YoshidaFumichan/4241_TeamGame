@@ -8,11 +8,7 @@ void EndScene::Initialize() {
 	// BGMæ“¾
 	bgm = LoadSoundMem(L"Resources/BGM_Title.mp3");
 	// ‰¹—Ê‚ğ’²®
-#if DEBUG
-	ChangeVolumeSoundMem(0, bgm);
-#else
-	ChangeVolumeSoundMem(50, bgm);
-#endif // DEBUG
+	ChangeVolumeSoundMem(100, bgm);
 	// BGMÄ¶
 	PlaySoundMem(bgm, DX_PLAYTYPE_BACK);
 }
