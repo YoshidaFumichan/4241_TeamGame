@@ -14,6 +14,7 @@ void Notes::StaticInitialize() {
 	SoundEffect = LoadSoundMem(L"Resources/SE.mp3");
 	notesHandle[0] = LoadGraph(L"Resources/left.png");
 	notesHandle[1] = LoadGraph(L"Resources/down.png");
+
 }
 
 void Notes::Initialize(const int& type, const int& StartTime) {
@@ -50,8 +51,11 @@ void Notes::Update() {
 }
 
 void Notes::Draw() {
-	if (type == 0)	DrawGraph(0, 0, notesHandle[1], true);
-	else if (type == 1)	DrawGraph(0, 0, notesHandle[0], true);
+	int size = 96;
+	int posX = 640 - size / 2;
+	int posY = 300 - size / 2;
+	if (type == 0)	DrawExtendGraph(posX, posY, posX + size, posY + size, notesHandle[1], true);
+	else if (type == 1)	DrawExtendGraph(posX, posY, posX + size, posY + size, notesHandle[0], true);
 }
 
 inline void Notes::CheckInput() {
